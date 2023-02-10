@@ -34,7 +34,6 @@ const createEntry = async (req, res) => {
 
 const deleteEntry = async (req, res) => {
     const entry = await Entry.query().deleteById(req.params.id)
-
     if (!entry)
         throw new NotFoundError(`Entry with id: ${req.params.id} not found.`)
 

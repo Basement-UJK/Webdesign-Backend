@@ -7,11 +7,20 @@ const errorHandlerMiddleware = (err, req, res, next) => {
     };
 
     if (typeof err.nativeError !== 'undefined') {
+        // console.log(err.nativeError)
+        customError.statusCode = StatusCodes.BAD_REQUEST
 
         if (err.nativeError.code === '42703'){
            customError.msg = 'Some field in table does not exist.'
-           customError.statusCode = StatusCodes.BAD_REQUEST
         }
+        if (err.nativeError.code === '23502') {
+            customError.msg = 'Invalid body.'
+
+        }
+        if (err.nativeError.code === '23505') {
+            customError.msg = 'Email is taken.'
+        }
+
 
     }
     return res.status(customError.statusCode).json({ msg: customError.msg });

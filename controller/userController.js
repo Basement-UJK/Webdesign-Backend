@@ -24,12 +24,15 @@ const getUser = async (req, res) => {
 const deleteUser = async (req, res) => {
 
     const user_id = req.params.id
-    const user = await User.query.findById(user_id)
+    const user = await User.query().findById(user_id)
 
     if(!user)
         throw new NotFoundError(`User with id: ${user_id} not found.`)
 
-    const entries = await Entry.query.where('user_id', '=', user_id)
+    if(req.user.id != req.params.id)
+        throw new BadRequestError('Only owner can delete his account.')
+
+    const entries = await Entry.query().where('user_id', '=', user_id)
 
     if(entries.length !== 0)
         throw new BadRequestError(`You have to delete all entries added by user with id: ${user_id}.`)
