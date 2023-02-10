@@ -8,11 +8,25 @@ class User extends Model {
     static get tableName() {
         return "users";
     }
+    
+    // TODO use this  function
+    async hashPassword(){
+        const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(this.password, salt);
+        this.password = hashedPassword;
+    }
     async $beforeInsert(queryContext) {
         await super.$beforeInsert(queryContext);
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(this.password, salt);
         this.password = hashedPassword;
+    }
+    async $beforeUpdate(queryContext) {
+        await super.$beforeInsert(queryContext);
+        const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(this.password, salt);
+        this.password = hashedPassword;
+
     }
     createJWT() {
         return jwt.sign(

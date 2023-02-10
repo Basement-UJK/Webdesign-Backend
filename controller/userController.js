@@ -6,7 +6,13 @@ const { StatusCodes } = require('http-status-codes')
 const getAllUsers = async (req, res) => {
     const users = await User.query()
 
-    res.status(StatusCodes.OK).json(users)
+    let arr = []
+    users.map(user=>{  
+        const { password, email, ...user_entity } = user
+        arr.push(user_entity)
+    })
+
+    res.status(StatusCodes.OK).json(arr)
 }
 
 const getUser = async (req, res) => {

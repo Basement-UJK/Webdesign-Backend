@@ -23,8 +23,13 @@ const getEntries = async (req, res) => {
     res.status(StatusCodes.OK).json(entries)
 }
 
+// TODO user should not provide his id in req body
 const createEntry = async (req, res) => {
-    const entry = await Entry.query().insert({ ...req.body })
+    const data = {
+        ...req.body,
+        user_id: req.user.id
+    }
+    const entry = await Entry.query().insert({ ...data })
 
     if (!entry)
         throw new BadRequestError('Invalid data.')
