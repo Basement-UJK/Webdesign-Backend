@@ -21,13 +21,15 @@ class User extends Model {
         const hashedPassword = await bcrypt.hash(this.password, salt);
         this.password = hashedPassword;
     }
-    async $beforeUpdate(queryContext) {
-        await super.$beforeInsert(queryContext);
-        const salt = await bcrypt.genSalt(10)
-        const hashedPassword = await bcrypt.hash(this.password, salt);
-        this.password = hashedPassword;
+    // TODO  check if password is updating if true hash it 
+    // async $beforeUpdate(queryContext) {
+    //     await super.$beforeInsert(queryContext);
+    //     const salt = await bcrypt.genSalt(10)
+    //     const hashedPassword = await bcrypt.hash(this.password, salt);
+    //     this.password = hashedPassword;
 
-    }
+    // }
+
     createJWT() {
         return jwt.sign(
             { 

@@ -13,7 +13,7 @@ exports.up = function (knex) {
             table.string('title', 250).notNullable();
             table.text('description').notNullable();
             table.enu('category', ['Game development', 'Web development']).notNullable()
-            table.integer('user_id').unsigned().references('id').inTable('users');
+            table.integer('user_id').unsigned().references('id').inTable('users').notNullable();
             table.timestamp('created_at').defaultTo(knex.fn.now());
             table.timestamp('updated_at').defaultTo(knex.fn.now());
         })
