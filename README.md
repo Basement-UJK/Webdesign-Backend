@@ -30,8 +30,7 @@ Documentation
 ## Documentation
 
 The API documentation for this project can be found here https://documenter.getpostman.com/view/22924174/2s935spNbJ
-Contributing to the Project
 
-## Contribution
+## Contributing to the Project
 
 If you'd like to contribute to the project, we'd love to have you! Please reach out to the project maintainers for more information on how to get involved.
