@@ -1,14 +1,12 @@
 # UJK Science Club
 
 Welcome to the UJK Science Club project! This is a blog-style platform designed to showcase the exciting projects developed by the science club.
-Technologies Used
 
-## Technologies used
+## Technologies Used
 
 This project is built with Node.js and the Express framework. The database used is PostgreSQL, and Knex.js is used for managing migrations.
-Running the Project Locally
 
-## To run the project locally 
+## Running the Project Locally 
 
 you'll need to have Node.js installed on your machine. Additionally, you'll need to have the PostgreSQL service running, which can be downloaded here.
 
