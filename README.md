@@ -23,7 +23,6 @@ Once you have these requirements in place, you can follow these steps to set up 
 ## Deployment
 
 The purpose of this project is to be used on Heroku. Information about deploying it on Heroku will be available soon.
-Documentation 
 
 ## Documentation
 
