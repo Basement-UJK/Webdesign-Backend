@@ -54,8 +54,21 @@ const updateUser = async (req, res) => {
     if (req.user.id != user_id)
         throw new BadRequestError(`Only owner can update his account or user does't exist.`)
 
-    const user = await User.query().findById(req.user.id).patch({...req.body})
+    let data = {}
 
+    data = Object.assign({}, req.body)
+    
+    const user = await User.query().findById(req.user.id)
+    if(req.body.hasOwnProperty('password')){
+        const new_password = await user.hashPassword(req.body.password)
+        data.password = new_password
+    }
+    console.log(data)
+
+    const updated_user =  Object.assign(user, data)
+
+    await updated_user.$query().update(data)
+    console.log(updated_user)
     if (!user)
         throw new NotFoundError(`User with id: ${user_id} not found.`)
 

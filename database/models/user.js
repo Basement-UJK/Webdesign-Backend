@@ -9,11 +9,10 @@ class User extends Model {
         return "users";
     }
     
-    // TODO use this  function
-    async hashPassword(){
+    async hashPassword(new_password){
         const salt = await bcrypt.genSalt(10)
-        const hashedPassword = await bcrypt.hash(this.password, salt);
-        this.password = hashedPassword;
+        const hashedPassword = await bcrypt.hash(new_password, salt);
+        return hashedPassword
     }
     async $beforeInsert(queryContext) {
         await super.$beforeInsert(queryContext);
@@ -21,14 +20,6 @@ class User extends Model {
         const hashedPassword = await bcrypt.hash(this.password, salt);
         this.password = hashedPassword;
     }
-    // TODO  check if password is updating if true hash it 
-    // async $beforeUpdate(queryContext) {
-    //     await super.$beforeInsert(queryContext);
-    //     const salt = await bcrypt.genSalt(10)
-    //     const hashedPassword = await bcrypt.hash(this.password, salt);
-    //     this.password = hashedPassword;
-
-    // }
 
     createJWT() {
         return jwt.sign(
