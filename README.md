@@ -14,13 +14,13 @@ you'll need to have Node.js installed on your machine. Additionally, you'll need
 
 Once you have these requirements in place, you can follow these steps to set up the project:
 
-    - Clone the repository to your local machine.
-    - Open the terminal and navigate to the project's directory.
-    - Type npm i to install all the packages required for the project.
-    - Type npm run up to initialize the database.
-    - Type npm run seed to seed the database with some initial data.
-    - Type npm run test to run the tests and ensure that everything is working as expected.
-    - Finally, type npm start to start the project.
+1. Clone the repository to your local machine.
+2. Open the terminal and navigate to the project's directory.
+3. Type npm i to install all the packages required for the project.
+4. Type npm run up to initialize the database.
+5. Type npm run seed to seed the database with some initial data.
+6. Type npm run test to run the tests and ensure that everything is working as expected.
+7. Finally, type npm start to start the project.
 
 ## Deployment
 
