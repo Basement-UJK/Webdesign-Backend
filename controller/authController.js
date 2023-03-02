@@ -4,7 +4,6 @@ const { BadRequestError, UnauthenticatedError } = require('../errors')
 
 
 const cookieOptions = {
-    httpOnly: true,
     maxAge: 3600 * 1000, // expires in 1 hour
 }
 
