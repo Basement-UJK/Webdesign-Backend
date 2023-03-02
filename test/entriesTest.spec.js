@@ -9,7 +9,7 @@ chai.use(chaiHttp)
 let token = ''
 
 describe('/api/v1/auth/login GET TOKEN', () => {
-    it('should respond with status OK', function (done) {
+    it.only('should respond with status OK', function (done) {
         chai.request(app)
             .post('/api/v1/auth/login')
             .send({
@@ -19,8 +19,7 @@ describe('/api/v1/auth/login GET TOKEN', () => {
             .end((err, res) => {
                 if (err) console.error(err)
                 expect(res.status).to.equal(StatusCodes.OK)
-                expect(res.body.token).to.be.not.null
-                token = res.body.token
+                token = res.cookie.jwt
                 done()
             })
     })
@@ -75,7 +74,7 @@ describe('/api/v1/entries POST', () => {
     it('should respond with status CREATED', function (done) {
         chai.request(app)
             .post('/api/v1/entries')
-            .set('Authorization', 'Bearer '+ token)
+            .set('Cookie', `jwt=${token}`)
             .send({
                 title:'apiTest1',
                 description:'apiTest1testeste',

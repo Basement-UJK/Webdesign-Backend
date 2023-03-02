@@ -9,7 +9,7 @@
         "down": "npx knex migrate:down --knexfile database/knexfile.js",
         "rollback": "npx knex migrate:rollback --all --knexfile database/knexfile.js",
         "seed": "npx knex seed:run --knexfile database/knexfile.js",
-        "test": "npm run seed && PORT=3000 mocha test/ --exit"
+        "test": "npm run seed && PORT=3000 mocha test/ --exit -g ''"
     },
     "author": "",
     "license": "ISC",
@@ -17,6 +17,7 @@
         "bcryptjs": "^2.4.3",
         "chai": "^4.3.7",
         "chai-http": "^4.3.0",
+        "cookie-parser": "1.4.6",
         "cors": "2.8.5",
         "dotenv": "16.0.3",
         "express": "4.18.2",

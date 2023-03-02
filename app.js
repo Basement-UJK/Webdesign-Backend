@@ -10,6 +10,7 @@ const xss = require('xss-clean')
 const helmet = require('helmet')
 const cors = require('cors')
 const rateLimiter = require('express-rate-limit');
+const cookieParser = require('cookie-parser')
 // middleware
 app.set('trust proxy', 1);
 app.use(
@@ -19,6 +20,7 @@ app.use(
     })
 );
 app.use(express.json())
+app.use(cookieParser())
 app.use(helmet())
 app.use(cors())
 app.use(xss())
