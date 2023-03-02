@@ -14,10 +14,11 @@ const register = async (req, res) => {
         throw new BadRequestError('Invalid data.')
 
     const token = user.createJWT()
-    res.cookie('jwt', token, cookieOptions).status(StatusCodes.OK).json({ msg: 'Registered' })
+    res.cookie('jwt', token, cookieOptions).status(StatusCodes.OK).json(token)
 }
 
 const login = async (req, res) => {
+    console.log(req.body)
     const { email, password } = req.body
 
     if (!email || !password)
@@ -33,7 +34,7 @@ const login = async (req, res) => {
 
 
     const token = user.createJWT()
-    res.cookie('jwt', token, cookieOptions).status(StatusCodes.OK).json({msg:'Logged in'})
+    res.cookie('jwt', token, cookieOptions).status(StatusCodes.OK).json(token)
 }
 
 module.exports = {
