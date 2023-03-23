@@ -12,8 +12,8 @@ exports.up = function (knex) {
             table.increments('id').primary()
             table.string('title', 250).notNullable();
             table.text('description').notNullable();
-            table.text('body').notNullable();
-            table.string('cover_image').notNullable()
+            table.text('body')
+            table.string('cover_image')
             table.enu('category', ['Game development', 'Web development']).notNullable()
             table.integer('user_id').unsigned().references('id').inTable('users').notNullable();
             table.timestamp('created_at').defaultTo(knex.fn.now());

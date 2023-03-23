@@ -28,10 +28,12 @@ app.use(xss())
 const userRoutes = require('./routes/userRoutes')
 const entryRoutes = require('./routes/entryRoutes')
 const authRoutes = require('./routes/authRoutes')
+const uploadRoutes = require('./routes/uploadRoutes')
 
 app.use('/api/v1/users', userRoutes)
 app.use('/api/v1/entries', entryRoutes)
 app.use('/api/v1/auth', authRoutes)
+app.use('/api/v1/upload', uploadRoutes)
 
 // error handler
 
