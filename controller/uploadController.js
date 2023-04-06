@@ -1,15 +1,19 @@
-const AWS = require('aws-sdk')
+const {
+    S3
+} = require("@aws-sdk/client-s3")
+
 const uuid = require('uuid')
 const { StatusCodes } = require('http-status-codes')
-const s3 = new AWS.S3({
+
+const s3 = new S3({
     credentials: {
-        accessKeyId: process.env.AWS_ACCES_KEY,
-        secretAccessKey: process.env.AWS_SECRET_ACCES_KEY
+        accessKeyId: process.env.AWS_ACCESS_KEY,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+        region: 'eu-north-1'
     }
 })
 
 const getURL = async (req, res) => {
-
     const key = `${uuid.v1()}.jpeg`
 
     const url = await s3.getSignedUrl('putObject', {
@@ -36,7 +40,6 @@ const uploadImage = (buffer, image_name) => {
             else
                 resolve(data)
         })
-
 
     })
 }

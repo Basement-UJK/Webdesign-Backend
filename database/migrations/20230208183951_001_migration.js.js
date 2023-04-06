@@ -19,6 +19,12 @@ exports.up = function (knex) {
             table.timestamp('created_at').defaultTo(knex.fn.now());
             table.timestamp('updated_at').defaultTo(knex.fn.now());
         })
+        .createTable('message', (table)=>{
+            table.increments('id').primary()
+            table.string('email', 50).notNullable();
+            table.string('name', 50).notNullable();
+            table.text('message').notNullable();
+        })
 };
 
 
