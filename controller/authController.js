@@ -2,6 +2,11 @@ const User = require('../database/models/user')
 const { StatusCodes } = require('http-status-codes')
 const { BadRequestError, UnauthenticatedError } = require('../errors')
 
+
+const cookieOptions = {
+    maxAge: 3600 * 1000, // expires in 1 hour
+}
+
 const register = async (req, res) => {
     const user = await User.query().insert({ ...req.body })
     
@@ -9,7 +14,7 @@ const register = async (req, res) => {
         throw new BadRequestError('Invalid data.')
 
     const token = user.createJWT()
-    res.status(StatusCodes.CREATED).json({ token: token })
+    res.cookie('jwt', token, cookieOptions).status(StatusCodes.OK).json({jwt: token})
 }
 
 const login = async (req, res) => {
@@ -28,7 +33,7 @@ const login = async (req, res) => {
 
 
     const token = user.createJWT()
-    res.status(StatusCodes.OK).json({ token: token })
+    res.cookie('jwt', token, cookieOptions).status(StatusCodes.OK).json({ jwt: token })
 }
 
 module.exports = {

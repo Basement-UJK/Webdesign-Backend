@@ -28,8 +28,7 @@ class User extends Model {
                 first_name: this.first_name,
                 last_name: this.last_name
             },
-            process.env.JWT_SECRET,
-            { expiresIn: process.env.JWT_EXPIRES }
+            process.env.JWT_SECRET
         )
     }
     async comparePassword(password) {

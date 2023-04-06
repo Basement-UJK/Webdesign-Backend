@@ -9,7 +9,7 @@
         "down": "npx knex migrate:down --knexfile database/knexfile.js",
         "rollback": "npx knex migrate:rollback --all --knexfile database/knexfile.js",
         "seed": "npx knex seed:run --knexfile database/knexfile.js",
-        "test": "npm run seed && PORT=3000 mocha test/ --exit"
+        "test": "npm run seed && PORT=3000 mocha test/ --exit -g ''"
     },
     "author": "",
     "license": "ISC",
