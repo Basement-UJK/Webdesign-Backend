@@ -14,10 +14,9 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@aws-sdk/client-s3": "3.301.0",
+        "@sendgrid/mail": "7.7.0",
         "bcryptjs": "^2.4.3",
-        "chai": "^4.3.7",
-        "chai-http": "^4.3.0",
-        "cookie-parser": "1.4.6",
         "cors": "2.8.5",
         "dotenv": "16.0.3",
         "express": "4.18.2",
@@ -36,5 +35,10 @@
     },
     "engines": {
         "node": "v18.12.1"
+    },
+    "devDependencies": {
+        "aws-sdk-js-codemod": "0.14.1",
+        "chai": "4.3.7",
+        "chai-http": "4.3.0"
     }
 }
