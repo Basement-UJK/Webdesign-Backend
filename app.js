@@ -31,12 +31,15 @@ const entryRoutes = require('./routes/entryRoutes')
 const authRoutes = require('./routes/authRoutes')
 const uploadRoutes = require('./routes/uploadRoutes')
 const messageRoutes = require('./routes/messageRoutes')
+const categoryRoutes = require('./routes/categoryRoutes')
+
 
 app.use('/api/v1/users', userRoutes)
 app.use('/api/v1/entries', entryRoutes)
 app.use('/api/v1/auth', authRoutes)
 app.use('/api/v1/upload', uploadRoutes)
 app.use('/api/v1/messages', messageRoutes)
+app.use('/api/v1/categories', categoryRoutes)
 
 // error handler
 
