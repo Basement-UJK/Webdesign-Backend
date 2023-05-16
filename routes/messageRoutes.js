@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const authentication = require('../middleware/auth')
 const {
     getAllMessages,
     getMessageById,
@@ -17,6 +18,6 @@ router.get('/:id', getMessageById);
 router.post('/', createMessage);
 
 // DELETE message by ID
-router.delete('/:id', deleteMessageById);
+router.delete('/:id',authentication, deleteMessageById);
 
 module.exports = router;
