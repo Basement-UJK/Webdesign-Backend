@@ -9,7 +9,8 @@
         "down": "ENV=production npx knex migrate:down --knexfile database/knexfile.js ",
         "rollback": "npx knex migrate:rollback --all --knexfile database/knexfile.js",
         "seed": "npx knex seed:run --knexfile database/knexfile.js",
-        "test": "npm run seed && PORT=3000 mocha test/ --exit -g ''"
+        "test": "npm run seed && PORT=3000 mocha test/ --exit -g ''",
+        "add_users": "npx knex seed:run --specific=accounts.js --knexfile ./database/knexfile.js"
     },
     "author": "",
     "license": "ISC",
